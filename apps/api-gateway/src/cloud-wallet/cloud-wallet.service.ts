@@ -162,9 +162,7 @@ sendBasicMessage(
   return this.sendNatsMessage(this.cloudWalletServiceProxy, 'send-basic-message', messageDetails);
 }
 
-createSelfAttestedW3cCredential(selfAttestedCredentialDto: SelfAttestedCredentialDto): Promise<{
-    response: object;
-}> {
-    return this.sendNats(this.cloudWalletServiceProxy, 'create-self-attested-w3c-credential', selfAttestedCredentialDto);
+createSelfAttestedW3cCredential(selfAttestedCredentialDto: SelfAttestedCredentialDto): Promise<Response> {
+    return this.sendNatsMessage(this.cloudWalletServiceProxy, 'create-self-attested-w3c-credential', selfAttestedCredentialDto);
 }
 }

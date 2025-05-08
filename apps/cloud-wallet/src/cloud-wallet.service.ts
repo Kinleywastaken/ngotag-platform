@@ -814,12 +814,9 @@ export class CloudWalletService {
         });
       }
 
-      const response = {
-        ...selfAttestedCredentialResponse,
-        tenantId
-      };
+      selfAttestedCredentialResponse.tenantId = tenantId;
 
-      return response;
+      return selfAttestedCredentialResponse;
     } catch (error) {
       this.logger.error(`[createSelfAttestedW3cCredential] - error in create self-attested credential: ${error}`);
       await this.commonService.handleError(error);

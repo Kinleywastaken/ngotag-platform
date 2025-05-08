@@ -545,7 +545,7 @@ export class CloudWalletController {
         * @param SelfAttestedCredentialDto
         * @returns success message
     */
-   @Post('/credentals/w3c/self-attested')
+   @Post('/credentials/w3c/self-attested')
    @ApiOperation({ summary: 'Create self-attested W3C credential for cloud wallet', description: 'Create self-attested W3C credential for cloud wallet' })
    @ApiResponse({ status: HttpStatus.CREATED, description: 'Success', type: ApiResponseDto })
    @UseGuards(AuthGuard('jwt'), UserRoleGuard)
