@@ -729,6 +729,29 @@ export class CloudWalletService {
           }
         }
 
+
+    /**
+    * Delete W3C credential by record id
+    * @param credentialDetails
+    */
+    async deleteW3cCredentialByRecord(credentialDetails: ICredentialDetails): Promise<Response> {
+      try {
+        const { userId, credentialRecordId } = credentialDetails;
+        const [baseWalletDetails, getTenant, decryptedApiKey] = await this._commonCloudWalletInfo(userId);
+        
+        const {tenantId} = getTenant;
+        const { agentEndpoint } = baseWalletDetails;
+  
+        const url = `${agentEndpoint}${CommonConstants.CLOUD_WALLET_DELETE_W3C_CREDENTIAL}/${credentialRecordId}/${tenantId}`;
+  
+        const credentialDetailResponse = await this.commonService.httpDelete(url, { headers: { authorization: decryptedApiKey } });
+        return credentialDetailResponse;
+      } catch (error) {
+        await this.commonService.handleError(error);
+        throw error;
+      }
+    }
+    
   /**
    * Get basic-message by connection id
    * @param connectionDetails

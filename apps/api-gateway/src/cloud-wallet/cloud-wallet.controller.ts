@@ -762,6 +762,43 @@ async deleteCredentialByCredentialRecordId(
   return res.status(HttpStatus.OK).json(finalResponse);
 }
 
+/**
+   * Delete W3C credential by credential id
+   * @param credentialListQueryOptions
+   * @param res
+   * @returns deleted W3C credential
+   */
+@Delete('/credential/w3c/:credentialRecordId')
+@ApiOperation({
+  summary: 'Get credential by credential record Id',
+  description: 'Get credential by credential record Id'
+})
+@ApiResponse({ status: HttpStatus.OK, description: 'Success', type: ApiResponseDto })
+@UseGuards(AuthGuard('jwt'), UserRoleGuard)
+async deleteW3cCredentialByCredentialRecordId(
+  @Param('credentialRecordId') credentialRecordId: string,
+  @Res() res: Response,
+  @User() user: user
+): Promise<Response> {
+  const { id, email } = user;
+
+  const credentialDetails: ICredentialDetails = {
+    userId: id,
+    email,
+    credentialRecordId
+  };
+
+  const connectionDetailResponse = await this.cloudWalletService.deleteW3cCredentialByCredentialRecordId(
+    credentialDetails
+  );
+  const finalResponse: IResponse = {
+    statusCode: HttpStatus.OK,
+    message: ResponseMessages.cloudWallet.success.deleteCredential,
+    data: connectionDetailResponse
+  };
+  return res.status(HttpStatus.OK).json(finalResponse);
+}
+
     /**
         * Get basic-message by connection id
         * @param connectionId 

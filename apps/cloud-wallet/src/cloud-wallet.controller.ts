@@ -120,6 +120,11 @@ export class CloudWalletController {
     return this.cloudWalletService.deleteCredentialByRecord(credentialDetails);
   }
 
+  @MessagePattern({ cmd: 'delete-w3c-credential-by-record-id' })
+  async deleteW3cCredentialByCredentialRecordId(credentialDetails: ICredentialDetails): Promise<Response> {
+    return this.cloudWalletService.deleteW3cCredentialByRecord(credentialDetails);
+  }
+
   @MessagePattern({ cmd: 'basic-message-list-by-connection-id' })
   async getBasicMessageByConnectionId(connectionDetails: IBasicMessage): Promise<Response> {
     return this.cloudWalletService.getBasicMessageByConnectionId(connectionDetails);

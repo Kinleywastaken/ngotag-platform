@@ -150,6 +150,12 @@ deleteCredentialByCredentialRecordId(
   return this.sendNatsMessage(this.cloudWalletServiceProxy, 'delete-credential-by-record-id', credentialDetails);
 }
 
+deleteW3cCredentialByCredentialRecordId(
+  credentialDetails: ICredentialDetails
+): Promise<Response> {
+  return this.sendNatsMessage(this.cloudWalletServiceProxy, 'delete-w3c-credential-by-record-id', credentialDetails);
+}
+
 getBasicMessageByConnectionId(
   connectionDetails: IBasicMessage
 ): Promise<Response> {
