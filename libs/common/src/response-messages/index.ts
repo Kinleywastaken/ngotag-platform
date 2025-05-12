@@ -524,6 +524,7 @@ export const ResponseMessages = {
     success: {
       create: 'Cloud wallet created successfully',
       receive:'Received invitation successfully',
+      getBaseWalletInfo: 'Fetched base wallet info',
       configureBaseWallet: 'Successfully configure the base wallet.',
       acceptProofRequest: 'Proof request has been successfully accepted.',
       declineProofRequest: 'Proof request has been successfully declined.',
@@ -545,6 +546,7 @@ export const ResponseMessages = {
     error: {
       baseWalletNotFound: 'Base wallet configuration not found',
       createCloudWallet: 'Error while creating cloud wallet on agent',
+      BaseWalletLimitExceeded :'Limit exceeded for base wallet to create subwallet',
       encryptCloudWalletKey: 'Error while creating encrypting wallet key',
       userExist: 'Wallet already exist for the user',
       walletNotExist: 'Wallet not exist for the user',
