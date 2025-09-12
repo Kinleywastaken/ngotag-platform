@@ -481,7 +481,6 @@ const importGeoLocationMasterData = async (): Promise<void> => {
       }
   
       const command = `${process.cwd()}/${scriptPath} ${dbUrl}`;
-  
       const { stdout, stderr } = await execPromise(command);
   
       if (stdout) {
